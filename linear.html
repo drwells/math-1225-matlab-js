@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+  <link rel="stylesheet" type="text/css" href="jsxgraph.css"/>
+  <script type="text/javascript" src="jsxgraphcore.js"></script>
+  <style>
+    textarea {
+        resize: none;
+    }
+  </style>
+</head>
+
+<body>
+  <p>
+    This is the JavaScript version of <span style="font-family:
+    courier">lineartool2.m</span>.
+  </p>
+
+  Function to plot:
+  <form>
+    <textarea id="userFunction" rows=1 cols=50 onKeyPress="return ignoreEnter(event)">cos(x)</textarea>
+    <br>
+    <input type="button" value="plot" onClick="getUserFunction()">
+    <input type="button" value="clear" onClick="userFunctionBoard.clear()">
+  </form>
+
+  x-coordinate at which to linearize:
+  <form><textarea id="linearizationPoint" rows=1 cols=50 onKeyPress="return ignoreEnter(event)">0.0</textarea>
+    <br>
+    <input type="button" value="plot linearization" onClick="setLinearizationPoint()">
+    <input type="button" value="clear" onClick="clearLinearizationPlots()">
+  </form>
+
+  <div id="functionBox" class="jxgbox" style="width:400px; height:400px;"></div>
+  x-bounds:
+  <textarea id="xMinUserFunctionPlot" rows=1 cols=5>-5.0</textarea>
+  <textarea id="xMaxUserFunctionPlot" rows=1 cols=5>5.0</textarea>
+  y-bounds:
+  <textarea id="yMinUserFunctionPlot" rows=1 cols=5>-5.0</textarea>
+  <textarea id="yMaxUserFunctionPlot" rows=1 cols=5>5.0</textarea>
+  <input type="button" onClick="userFunctionBoard.plotBounds.updateBox()" value="update">
+  <p>
+    Plot of the function (blue), first derivative (black), and linearization (magenta).
+  </p>
+  <br>
+  ε value (the linearization tolerance):
+  <form><textarea id="linearizationTolerance" rows=1 cols=50 onKeyPress="return ignoreEnter(event)">1.0</textarea>
+    <br>
+    <input type="button" value="set" onClick="setLinearizationTolerance()">
+    <input type="button" value="reset" onClick="resetLinearizationTolerance()">
+  </form>
+
+  δ value (the linearization interval radius):
+  <form><textarea id="linearizationIntervalRadius" rows=1 cols=50 onKeyPress="return ignoreEnter(event)">1.0</textarea>
+    <br>
+    <input type="button" value="set" onClick="setLinearizationIntervalRadius()">
+    <input type="button" value="reset" onClick="resetLinearizationIntervalRadius()">
+  </form>
+
+  <div id="linearizationToleranceBox" class="jxgbox" style="width:400px; height:400px;"></div>
+  x-bounds:
+  <textarea id="xMinLinearizationTolerancePlot" rows=1 cols=5>-5.0</textarea>
+  <textarea id="xMaxLinearizationTolerancePlot" rows=1 cols=5>5.0</textarea>
+  y-bounds:
+  <textarea id="yMinLinearizationTolerancePlot" rows=1 cols=5>-5.0</textarea>
+  <textarea id="yMaxLinearizationTolerancePlot" rows=1 cols=5>5.0</textarea>
+  <input type="button" onClick="linearizationToleranceBoard.plotBounds.updateBox()" value="update">
+  <p>
+    Plot of the function (blue), linearization (magenta), and the "ε"-envelope (green).
+  </p>
+  <br>
+  <div id="secondDerivativeBox" class="jxgbox" style="width:400px; height:400px;"></div>
+  x-bounds:
+  <textarea id="xMinSecondDerivativePlot" rows=1 cols=5>-5.0</textarea>
+  <textarea id="xMaxSecondDerivativePlot" rows=1 cols=5>5.0</textarea>
+  y-bounds:
+  <textarea id="yMinSecondDerivativePlot" rows=1 cols=5>-5.0</textarea>
+  <textarea id="yMaxSecondDerivativePlot" rows=1 cols=5>5.0</textarea>
+  <input type="button" onClick="secondDerivativeBoard.plotBounds.updateBox()" value="update">
+  <p>
+    Plot of the second derivative of the function (blue) and the "δ" bounds (red).
+  </p>
+  <script type="text/javascript" src="linear.js"></script>
+</body>
